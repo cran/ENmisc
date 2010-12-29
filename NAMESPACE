@@ -1,0 +1,4 @@
+export(mtapply,wtd.boxplot)
+import(graphics,grDevices,stats)
+S3method(wtd.boxplot, default)
+S3method(wtd.boxplot, formula)
