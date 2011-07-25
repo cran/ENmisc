@@ -3,8 +3,8 @@
 \title{Apply a Function of Multiple Arguments Over a Ragged Array
 }
 \description{
-  Apply a function of multiple arguments to each cell of a ragged array, that is to each
-  (non-empty) group of values given by a unique combination of the
+  Apply a function of multiple arguments to cells of a identically structures ragged arrays, that is to each set
+  of (non-empty) groups of values given by a unique combination of the
   levels of certain factors. It is a hybrid of \code{tapply} and \code{mapply}.
 }
 
@@ -31,8 +31,8 @@ mtapply(X, INDEX, FUN = NULL, simplify = TRUE)
   \code{\link{match.fun}}, and hence it can be a function or a symbol or
   character string naming a function.
   
-  When \code{FUN} is present, \code{tapply} calls \code{FUN} for each
-  cell that has any data in it.  If \code{FUN} returns a single atomic
+  When \code{FUN} is present, \code{mtapply} calls \code{FUN} for each
+  set of cells that has any data in it.  If \code{FUN} returns a single atomic
   value for each such cell (e.g., functions \code{mean} or \code{var})
   and when \code{simplify} is \code{TRUE}, \code{tapply} returns a
   multi-way \link{array} containing the values, and \code{NA} for the

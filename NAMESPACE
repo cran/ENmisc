@@ -1,4 +1,6 @@
-export(mtapply,wtd.boxplot)
+export(mtapply,mlapply,wtd.boxplot,mosaicSelectDialog,mosaicPermDialog,
+	margin.table.structable,brewer.pal.ext,setMosaicPalette)
 import(graphics,grDevices,stats)
 S3method(wtd.boxplot, default)
 S3method(wtd.boxplot, formula)
+S3method(aperm, structable)

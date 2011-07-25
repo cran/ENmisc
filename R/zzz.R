@@ -1,0 +1,10 @@
+.onLoad <- function(libname,pkgname){
+	require(vcd)
+	require(gWidgets)
+	options("guiToolkit"="tcltk")
+	xx <- addStockIcons("To_row_vars",getStockIcons()$forward)
+	xx <- addStockIcons("To_col_vars",getStockIcons()$backward)
+	enopt <- getOption("ENmisc")
+	if (is.null(enopt$mosaicpalette)) enopt$mosaicpalette <- "RdYlGn"
+	options(ENmisc=enopt)
+}

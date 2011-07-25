@@ -1,0 +1,9 @@
+Version 1.0:   Initial version
+
+Version 1.1-4
+
+    o Added mlapply (hybrid of mapply and lapply) 
+	
+	o Added visual interface to mosaic plots (from vcd)
+	
+	
