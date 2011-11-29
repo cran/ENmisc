@@ -6,4 +6,6 @@ Version 1.1-4
 	
 	o Added visual interface to mosaic plots (from vcd)
 	
-	
+Version 1.1-5
+
+    o Minor bug fixes with errorMessage and warnMessage

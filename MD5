@@ -1,0 +1,17 @@
+049128111fbe6da152b200ca9888c4d8 *CHANGES.txt
+48b08e9ee6c905cd9027b32b849b9af7 *DESCRIPTION
+84c7e5a5252554b3d2ec5b2653c3eb12 *NAMESPACE
+603e29863074a7d15eaa5642c0bfb46c *R/mlapply.R
+f95a161b4c7db81e1195948f7b786729 *R/mosaicupanddown.R
+c1922e5ada2575fdf6464b4e131c5cac *R/mtapply.R
+1fbbc53b41612d05a34d26f371ca558f *R/wtd.boxplot.R
+8271b193a8ef4f03e1dc4dac5161d37b *R/wtd.boxplot.default.R
+114483d5068cf4d1f7e208bb0fbd62ab *R/wtd.boxplot.formula.R
+89197438ee66a8f6b3917ce34d4d996e *R/wtd.boxplot.stats.R
+85057f5d661bf4d6fdc124c0ce45bcac *R/wtd.fivenum.R
+67e114dd5d3ab97568c32f025709ae22 *R/zzz.R
+c58452ccf2ed27666b78b6f96c1ebb31 *man/ENmisc-package.Rd
+29f22469e9988f6684f67ae0418bcad9 *man/mlapply.Rd
+dc20fe36a8485eec14e1d520b9976273 *man/mosaicPermDialog.Rd
+d120698d20049a900b45843f88d0d7c7 *man/mtapply.Rd
+e51562a5ad4c4911ec3fef90ef0e5492 *man/wtd.boxplot.Rd

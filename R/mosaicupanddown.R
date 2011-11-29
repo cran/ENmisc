@@ -188,7 +188,7 @@ structableExpression <- function(objExprString){
 
 errorMessage <- function(msgText){
     if (CommanderWindowP()) {
-		Message(msgText,title="Error",icon="error")
+		Message(msgText,type="error")
 	} else {
 		gmessage(msgText,type="error")
 	}
@@ -196,7 +196,7 @@ errorMessage <- function(msgText){
 
 warnMessage <- function(msgText){
     if (CommanderWindowP()) {
-		Message(msgText,title="Warning",icon="warning")
+		Message(msgText,type="warning")
 	} else {
 		gmessage(msgText,type="warning")
 	}
