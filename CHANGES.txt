@@ -6,6 +6,9 @@ Version 1.1-4
 	
 	o Added visual interface to mosaic plots (from vcd)
 	
-Version 1.1-5
+
+Version 1.2-3
 
     o Minor bug fixes with errorMessage and warnMessage
+    o Icons bug (due to namespace mechanism changes in R 2.14.0) fixed
+

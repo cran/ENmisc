@@ -359,9 +359,11 @@ mosaicPermDialogHelper <- function(tablename,callingwidget,allow.collapsing=TRUE
 				showButton(i+1,4) else
 				hideButton(i+1,4) 
 			if (winstate$splits[i]) {
-					svalue(buttons[[listindex(i+1,3)]])<-"To_col_vars"
+#					svalue(buttons[[listindex(i+1,3)]])<-"To_row_vars"
+					svalue(buttons[[listindex(i+1,3)]])<-"backward"
 			} else {
-					svalue(buttons[[listindex(i+1,3)]])<-"To_row_vars"
+#					svalue(buttons[[listindex(i+1,3)]])<-"To_col_vars"
+					svalue(buttons[[listindex(i+1,3)]])<-"forward"
 			}
 			if (allow.collapsing) {
 				svalue(buttons[[listindex(i+1,6)]])<- winstate$activevars[i]	
@@ -585,7 +587,8 @@ mosaicPermDialogHelper <- function(tablename,callingwidget,allow.collapsing=TRUE
 		buttons[[listindex(i+1,2)]]<-gbutton("up",container=gg,
 			handler=uphandler(i),compound="image")
 		tbl[i+1,3] <- (gg <- ggroup(cont=tbl,spacing=1))
-		buttons[[listindex(i+1,3)]]<-gbutton(ifelse(currsplits[i],"To_col_vars","To_row_vars"),
+#		buttons[[listindex(i+1,3)]]<-gbutton(ifelse(currsplits[i],"To_col_vars","To_row_vars"),
+		buttons[[listindex(i+1,3)]]<-gbutton(ifelse(currsplits[i],"backward","forward"),
 			container=gg,
 			handler=rchandler(i),compound="image")
 		tbl[i+1,4] <- (gg <- ggroup(cont=tbl,spacing=1))
