@@ -15,4 +15,9 @@ Version 1.2-5
 
 Version 1.2-6
     o Rcmdr is only started when really needed
+
+Version 1.2-7
+    o bug fixing
+    o moved all global variables to an environment
+
 	

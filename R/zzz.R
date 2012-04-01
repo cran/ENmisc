@@ -7,4 +7,15 @@
 	enopt <- getOption("ENmisc")
 	if (is.null(enopt$mosaicpalette)) enopt$mosaicpalette <- "RdYlGn"
 	options(ENmisc=enopt)
+
+#	ENmiscEnvironment <- new.env()
+	
+#    putENmisc("putENmisc",putENmisc)
+
+#	putENmisc("getENmisc",getENmisc)
+
+#	putENmisc("ENmiscEnv",ENmiscEnv)
+
+#	rm(getENmisc,putENmisc,ENmiscEnv)
+	
 }

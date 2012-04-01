@@ -24,11 +24,13 @@ CommanderWindowP <- function(){
 
 getwinstate<-function(){
 	ensurewinstate()
-	get("structablepermdialogwindowstate",envir=globalenv())
+#	get("structablepermdialogwindowstate",envir=globalenv())
+	getENmisc("structablepermdialogwindowstate")
 }  
 
 setwinstate <- function(winstate){
-	assign("structablepermdialogwindowstate",winstate,envir=globalenv())
+#	assign("structablepermdialogwindowstate",winstate,envir=globalenv())
+	putENmisc("structablepermdialogwindowstate",winstate)
 }
 
 setwinstateval <- function(valnam,val){
@@ -42,7 +44,8 @@ getwinstateval <- function(valnam){
 }
 
 ensurewinstate <- function(){
-   if (!exists("structablepermdialogwindowstate",envir=globalenv()))
+#   if (!exists("structablepermdialogwindowstate",envir=globalenv()))
+   if (!exists("structablepermdialogwindowstate",envir=ENmiscEnv()))
    setwinstate(list())
 } 
 
@@ -282,10 +285,12 @@ mosaicPermDialogHelper <- function(tablename,callingwidget,allow.collapsing=TRUE
 	
 	ensurewinstate() 
 	doAssoc <- FALSE
-	assign("myAssoc",doAssoc,envir=globalenv())
+#	assign("myAssoc",doAssoc,envir=globalenv())
+	putENmisc("myAssoc",doAssoc)
 
     resultType <- "command"
-	assign("myResultType",resultType,envir=globalenv())
+#	assign("myResultType",resultType,envir=globalenv())
+	putENmisc("myResultType",resultType)
 
     if (is.character(tablename)) {
 		tmpres <- mosaicableObjectAndNamestring(tablename)
@@ -345,7 +350,8 @@ mosaicPermDialogHelper <- function(tablename,callingwidget,allow.collapsing=TRUE
 			}
 		}
 		activevarsCount <- length(Filter(function(x)x,winstate$activevars))
-		doAssoc <- get("myAssoc",envir=globalenv())
+#		doAssoc <- get("myAssoc",envir=globalenv())
+		doAssoc <- getENmisc("myAssoc")
 		if (doAssoc) {
 			allowDeactivate <- (activevarsCount > 2)
 		} else {
@@ -424,8 +430,10 @@ mosaicPermDialogHelper <- function(tablename,callingwidget,allow.collapsing=TRUE
 		}
 		
 		
-		doAssoc <- get("myAssoc",envir=globalenv())
-		resultType <- get("myResultType",envir=globalenv())
+#		doAssoc <- get("myAssoc",envir=globalenv())
+		doAssoc <- getENmisc("myAssoc")
+#		resultType <- get("myResultType",envir=globalenv())
+		resultType <- getENmisc("myResultType")
 		graphCommand <- ifelse(doAssoc,"assoc","mosaic")
         tablecommand <- command
 		
@@ -533,11 +541,13 @@ mosaicPermDialogHelper <- function(tablename,callingwidget,allow.collapsing=TRUE
 	
 	plottypebuttonhandler <- function(h,...){
 		if (svalue(h$obj) == "assoc plot") {
-			assign("myAssoc",TRUE,envir=globalenv())
+#			assign("myAssoc",TRUE,envir=globalenv())
+			putENmisc("myAssoc",TRUE)
 			svalue(bcol)<-FALSE
 			enabled(bcol)<-FALSE
 		} else {
-			assign("myAssoc",FALSE,envir=globalenv())
+#			assign("myAssoc",FALSE,envir=globalenv())
+			putENmisc("myAssoc",FALSE)
 			enabled(bcol)<-TRUE
 		}
 		updatedisplay()
@@ -545,7 +555,8 @@ mosaicPermDialogHelper <- function(tablename,callingwidget,allow.collapsing=TRUE
 	
 	OKbuttonhandler <- function(h,...){
 		if (CommanderWindowP()){ 
-			resultType <- get("myResultType",envir=globalenv())
+#			resultType <- get("myResultType",envir=globalenv())
+			resultType <- getENmisc("myResultType")
 			if (resultType == "structable"){
 				doItAndPrint(getwinstateval("tablecommand"))
 			} else {	
@@ -560,7 +571,8 @@ mosaicPermDialogHelper <- function(tablename,callingwidget,allow.collapsing=TRUE
 		} else {
 			resultType <- 'structable'
 		}
-	   assign("myResultType",resultType,envir=globalenv())
+#	   assign("myResultType",resultType,envir=globalenv())
+	   putENmisc("myResultType",resultType)
 	}
 	
 	
@@ -607,8 +619,10 @@ mosaicPermDialogHelper <- function(tablename,callingwidget,allow.collapsing=TRUE
 			addSpring(gg)
 		}
 	}
-	assign("buttons",buttons,envir=globalenv())
-	assign("tbl",tbl,envir=globalenv())
+#	assign("buttons",buttons,envir=globalenv())
+	putENmisc("buttons",buttons)
+#	assign("tbl",tbl,envir=globalenv())
+	putENmisc("tbl",tbl)
 	for (i in 1:length(varnames)){
 		if (currsplits[i]){
 			svalue(buttons[[listindex(i+1,5)]])<-""
@@ -667,14 +681,25 @@ mosaicPermDialogHelper <- function(tablename,callingwidget,allow.collapsing=TRUE
 
 #		print(getwinstateval("tablecommand"))
 	
-	assign(".lastMosaicOrAssocPlotCommandVar",plotcommand,envir=globalenv())
+#	assign(".lastMosaicOrAssocPlotCommandVar",plotcommand,envir=globalenv())
+	putENmisc(".lastMosaicOrAssocPlotCommandVar",plotcommand)
 	
-    rm(myAssoc,envir=globalenv())
-	if (exists("structablepermdialogwindowstate",envir=globalenv()))	
-		rm("structablepermdialogwindowstate",envir=globalenv())
-	rm(buttons,tbl,envir=globalenv())	
-    resultType <- get("myResultType",envir=globalenv())
-    rm(myResultType,envir=globalenv())
+#    rm(myAssoc,envir=globalenv())
+
+    rm(list="myAssoc",envir=ENmiscEnv())
+
+#	if (exists("structablepermdialogwindowstate",envir=globalenv()))	
+#		rm("structablepermdialogwindowstate",envir=globalenv())
+
+	if (exists("structablepermdialogwindowstate",envir=ENmiscEnv()))	
+		rm(list="structablepermdialogwindowstate",envir=ENmiscEnv())
+
+#		rm(buttons,tbl,envir=globalenv())	
+		rm(buttons,tbl,envir=ENmiscEnv())	
+ #   resultType <- get("myResultType",envir=globalenv())
+ #   rm(myResultType,envir=globalenv())
+   resultType <- getENmisc("myResultType")
+   rm(list="myResultType",envir=ENmiscEnv())
 
 	
 #	print(resultType)
@@ -686,7 +711,8 @@ mosaicPermDialogHelper <- function(tablename,callingwidget,allow.collapsing=TRUE
 		myResult <- plotcommand
 	}
 	if (calledfromwidget) {
-		assign("gwidgetscallresult",myResult,envir=globalenv())
+#		assign("gwidgetscallresult",myResult,envir=globalenv())
+		putENmisc("gwidgetscallresult",myResult)
 		dispose(callingwidget)
 	}	
 	return(myResult)
@@ -730,12 +756,14 @@ mosaicSelectDialog <- function(){
 		tablename<-svalue(h$obj)
 	}
     if (!existMosaicAbles()) return(invisible(NULL))
-	tlist<-mosaicAbles()
-	mytitle=paste("Select table for plot")
+	tlist <- mosaicAbles()
+	mytitle <- paste("Select table for plot")
 
-	mywin<-gwindow(title=mytitle,visible=FALSE,handler=function(h,...){
-		if (exists("structablepermdialogwindowstate",envir=globalenv())) 
-			rm(structablepermdialogwindowstate,envir=globalenv())
+	mywin <- gwindow(title=mytitle,visible=FALSE,handler=function(h,...){
+#		if (exists("structablepermdialogwindowstate",envir=globalenv())) 
+#			rm(structablepermdialogwindowstate,envir=globalenv())
+		if (exists("structablepermdialogwindowstate",envir=ENmiscEnv())) 
+			rm(list="structablepermdialogwindowstate",envir=ENmiscEnv())
 	})
 
 
@@ -759,9 +787,11 @@ mosaicSelectDialog <- function(){
 	visible(mywin)<-TRUE
 	dummy <- raise(mywin)
 	make_modal(mywin)
-	if (exists("gwidgetscallresult",envir=globalenv())) {
-		res <- gwidgetscallresult
-		rm(gwidgetscallresult,envir=globalenv())
+#	if (exists("gwidgetscallresult",envir=globalenv())) {
+	if (exists("gwidgetscallresult",envir=ENmiscEnv())) {
+		res <- getENmisc("gwidgetscallresult")
+#		rm(gwidgetscallresult,envir=globalenv())
+		rm(list="gwidgetscallresult",envir=ENmiscEnv())
 		return(res)
 	}
 }
@@ -797,5 +827,3 @@ brewer.pal.ext <- function(n,name,reverse=FALSE){
    return(pal)
 }
 
-if (getRversion() >= "2.15.1") utils::globalVariables(c("error","myAssoc","myResultType",
-	"gwidgetscallresult","structablepermdialogwindowstate","gwidgetscallresult"))
