@@ -569,33 +569,33 @@ mosaicPermDialogHelper <- function(tablename,callingwidget,allow.collapsing=TRUE
 	addSpring(tgroup)
 	tbl<-glayout(container=tgroup,spacing=0)
 	addSpring(tgroup)
-	tbl[1,1] <- (g <- ggroup(cont=tbl,spacing=1))
-	buttons[[listindex(1,1)]] <- (gl <- glabel("Row vars",cont=g))
-	tbl[1,5] <- (g <- ggroup(cont=tbl))
-	buttons[[listindex(1,5)]] <- (gl <- glabel("Col vars",cont=g))
+	tbl[1,1] <- (g <- ggroup(container=tbl,spacing=1))
+	buttons[[listindex(1,1)]] <- (gl <- glabel("Row vars",container=g))
+	tbl[1,5] <- (g <- ggroup(container=tbl))
+	buttons[[listindex(1,5)]] <- (gl <- glabel("Col vars",container=g))
 	if (allow.collapsing){
-		tbl[1,6] <- (g <- ggroup(cont=tbl))
-		buttons[[listindex(1,6)]] <- (gl <- glabel("Active vars",cont=g))
+		tbl[1,6] <- (g <- ggroup(container=tbl))
+		buttons[[listindex(1,6)]] <- (gl <- glabel("Active vars",container=g))
 	}
 	
 	for (i in 1:length(varnames)){
-		tbl[i+1,1] <- (gg <- ggroup(cont=tbl,spacing=1))
+		tbl[i+1,1] <- (gg <- ggroup(container=tbl,spacing=1))
 		buttons[[listindex(i+1,1)]]<- (gl <- glabel(varnames[i],container=gg))
-		tbl[i+1,5] <- (gg <- ggroup(cont=tbl,spacing=1))
+		tbl[i+1,5] <- (gg <- ggroup(container=tbl,spacing=1))
 		buttons[[listindex(i+1,5)]]<- (gl <- glabel(varnames[i],container=gg))
-		tbl[i+1,2] <- (gg <- ggroup(cont=tbl,spacing=1))
+		tbl[i+1,2] <- (gg <- ggroup(container=tbl,spacing=1))
 		buttons[[listindex(i+1,2)]]<-gbutton("up",container=gg,
 			handler=uphandler(i),compound="image")
-		tbl[i+1,3] <- (gg <- ggroup(cont=tbl,spacing=1))
+		tbl[i+1,3] <- (gg <- ggroup(container=tbl,spacing=1))
 #		buttons[[listindex(i+1,3)]]<-gbutton(ifelse(currsplits[i],"To_col_vars","To_row_vars"),
 		buttons[[listindex(i+1,3)]]<-gbutton(ifelse(currsplits[i],"backward","forward"),
 			container=gg,
 			handler=rchandler(i),compound="image")
-		tbl[i+1,4] <- (gg <- ggroup(cont=tbl,spacing=1))
+		tbl[i+1,4] <- (gg <- ggroup(container=tbl,spacing=1))
 		buttons[[listindex(i+1,4)]]<-gbutton("down",container=gg,
 			handler=downhandler(i),compound="image")
 		if (allow.collapsing){
-			tbl[i+1,6] <- (gg <- ggroup(cont=tbl,spacing=1))
+			tbl[i+1,6] <- (gg <- ggroup(container=tbl,spacing=1))
 			addSpring(gg)
 			buttons[[listindex(i+1,6)]] <- (gcb <- gcheckbox(checked=start.active[i],
 				handler=checkbuttonhandler,container=gg))
@@ -615,14 +615,14 @@ mosaicPermDialogHelper <- function(tablename,callingwidget,allow.collapsing=TRUE
 	gg<-ggroup(container=win,expand=TRUE,fill="x")
 	addSpring(gg)
 	gf <- gframe("Arrow button action",container=gg)
-	grb<-gradio(c("Keep var order within margins","Reorder vars within margins"),cont=gf)	
+	grb<-gradio(c("Keep var order within margins","Reorder vars within margins"),container=gf)	
 	addSpring(gg)
 	addHandlerClicked(grb, handler=keepMarginHandler)
 	addSpring(gg)
 	gg<-ggroup(container=win,horizontal=FALSE)
 	addSpace(gg,45)
-	bcol<-gcheckbox("Colorize last variable",cont=gg,handler=colorbuttonhandler)
-	bcolrev<-gcheckbox("Reverse color scheme",cont=gg,handler=colorbuttonhandler)
+	bcol<-gcheckbox("Colorize last variable",container=gg,handler=colorbuttonhandler)
+	bcolrev<-gcheckbox("Reverse color scheme",container=gg,handler=colorbuttonhandler)
 
 	
 	if (extendedOptions){
@@ -630,11 +630,11 @@ mosaicPermDialogHelper <- function(tablename,callingwidget,allow.collapsing=TRUE
         addSpring(gg)
 		gf<-gframe(text='Graphics type',container=gg)
 		addSpring(gg)
-		grg <- gradio(c("mosaic plot","assoc plot"),cont=gf)
+		grg <- gradio(c("mosaic plot","assoc plot"),container=gf)
 	    addHandlerClicked(grg, handler=plottypebuttonhandler)
 		addSpring(gg)
 		gf<-gframe(text='Returned object',container=gg)
-		grret <- gradio(c("return plot command","return structable object"),cont=gf,handler=resulttypebuttonhandler)
+		grret <- gradio(c("return plot command","return structable object"),container=gf,handler=resulttypebuttonhandler)
 		addSpring(gg)		
 	}
 	
@@ -734,7 +734,7 @@ mosaicSelectDialog <- function(){
 
 	gg<-ggroup(horizontal=FALSE,container=mywin)
 	dummy<-glabel("Select table",container=gg)
-	cb<-gcombobox(tlist,select=ifelse(length(tlist)==1,1,0),container=gg,handler=dotable)
+	cb<-gcombobox(tlist,selected=ifelse(length(tlist)==1,1,0),container=gg,handler=dotable)
 
 	doOKbutton <- function(h,...){
 		tablename <- svalue(cb)

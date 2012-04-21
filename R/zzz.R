@@ -1,6 +1,6 @@
 .onLoad <- function(libname,pkgname){
-	require(vcd)
-	require(gWidgets)
+#	require(vcd)
+#	require(gWidgets)
 	options("guiToolkit"="tcltk")
 #	xx <- addStockIcons("To_col_vars",getStockIcons()$forward)
 #	xx <- addStockIcons("To_row_vars",getStockIcons()$backward)

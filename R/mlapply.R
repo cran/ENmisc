@@ -1,7 +1,7 @@
 mlapply <- function(lol,FUN,...){
   llol <- sapply(lol, length)
   nrows <- llol[1]
-  if (any(llol != nrows)) error("lists not of same length")
+  if (any(llol != nrows)) stop("lists not of same length")
   
   arglists <- lapply(as.list(1:length(lol[[1]])),
                      function(i) lapply(lol, `[[`, i))
