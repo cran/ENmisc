@@ -9,7 +9,11 @@ function (X, INDEX, FUN = NULL, simplify = TRUE)
     namelist <- vector("list", nI)
     names(namelist) <- names(INDEX)
     extent <- integer(nI)
-    nx <- ifelse(is.list(X),length(X[[1]]),length(X))
+	
+	nx <- ifelse(is.list(X), 
+					ifelse(is.data.frame(X[[1]]), dim(X[[1]])[1], length(X[[1]])), 
+					length(X))
+	
     one <- as.integer(1)
     group <- rep.int(one, nx)
     ngroup <- one

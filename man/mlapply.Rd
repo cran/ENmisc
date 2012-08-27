@@ -27,12 +27,12 @@ mlapply(lol,FUN,...)
    \code{mlapply} makes a function call to \code{FUN} for all
    the first elements of all the lists in \code{lol},
    then a function call to all the second elements of all the lists in \code{lol},
-   and returns all the results as a list.\cr
+   and retunrs all the results as a list.\cr
    If the first list in \code{lol} has named elements,
    the names will also be used for the elements of the resulting list.
 }
 \seealso{
-  \code{\link{lapply}}
+  \code{link{lapply}}
 }
 
 \examples{

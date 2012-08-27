@@ -60,7 +60,7 @@ mtapply(X, INDEX, FUN = NULL, simplify = TRUE)
   Wadsworth & Brooks/Cole.
 }
 \seealso{
-  the functions \code{\link{tapply}},
+  the functions \code{link{tapply}},
   \code{\link{mapply}},
   \code{\link{by}} and
   \code{\link{aggregate}} (using \code{tapply});

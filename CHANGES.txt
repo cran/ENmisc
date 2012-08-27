@@ -1,14 +1,14 @@
 Version 1.0:   Initial version
 
 Version 1.1-4
-
     o Added mlapply (hybrid of mapply and lapply) 
-	
 	o Added visual interface to mosaic plots (from vcd)
 	
-
 Version 1.2-3
-
     o Minor bug fixes with errorMessage and warnMessage
     o Icons bug (due to namespace mechanism changes in R 2.14.0) fixed
 
+Version 1.2-5
+    o mtapply now also accepts dataframes (not only vectors) as arguments
+    o startup behavior cleaned
+    o global variables notes suppressed when checking package

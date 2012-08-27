@@ -324,7 +324,7 @@ mosaicPermDialogHelper <- function(tablename,callingwidget,allow.collapsing=TRUE
 
 	updatedisplay<-function(updatemosaic=TRUE){
 		winstate<-getwinstate()
-		
+	
 		enabled(bcolrev) <- svalue(bcol)
 		if (!svalue(bcol)) {
 			svalue(bcolrev)<-FALSE
@@ -681,7 +681,7 @@ mosaicPermDialogHelper <- function(tablename,callingwidget,allow.collapsing=TRUE
 		myResult <- plotcommand
 	}
 	if (calledfromwidget) {
-		gwidgetscallresult <<- myResult
+		assign("gwidgetscallresult",myResult,envir=globalenv())
 		dispose(callingwidget)
 	}	
 	return(myResult)
@@ -789,3 +789,6 @@ brewer.pal.ext <- function(n,name,reverse=FALSE){
    if (reverse) pal  <- pal[n:1]
    return(pal)
 }
+
+if (getRversion() >= "2.15.1") utils::globalVariables(c("error","myAssoc","myResultType",
+	"gwidgetscallresult","structablepermdialogwindowstate","gwidgetscallresult"))
