@@ -12,3 +12,7 @@ Version 1.2-5
     o mtapply now also accepts dataframes (not only vectors) as arguments
     o startup behavior cleaned
     o global variables notes suppressed when checking package
+
+Version 1.2-6
+    o Rcmdr is only started when really needed
+	

@@ -252,7 +252,12 @@ mosaicableObjectAndNamestring <- function(x){
 
 mosaicPermDialog <- function(tablename,allow.collapsing=TRUE,start.active=NULL,
 							displayPermCommand=TRUE,extendedOptions=TRUE) {	
-    tablearg<-deparse(substitute(tablename))							
+
+	require(gWidgets)
+    require(gWidgetstcltk)
+    require(Rcmdr) 	
+
+	tablearg<-deparse(substitute(tablename))							
 	mosaicPermDialogHelper(tablearg,callingwidget=NULL,allow.collapsing,start.active,
 						   displayPermCommand,extendedOptions)				  
 }
@@ -718,7 +723,9 @@ mosaicAbles <- function(){
 
 
 mosaicSelectDialog <- function(){
-
+    require(gWidgets)
+    require(gWidgetstcltk)
+    require(Rcmdr) 	
 	dotable <- function(h,...){
 		tablename<-svalue(h$obj)
 	}

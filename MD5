@@ -1,8 +1,8 @@
-494b8ab503eda67caddd885d50c7163b *CHANGES.txt
-f35a7b5bfd704ad91c113c467798310d *DESCRIPTION
+ea8cc2059cca1b343e260e0a44fcd656 *CHANGES.txt
+9c6e3dc0d6cc975e8e080b6cb7c8de0a *DESCRIPTION
 84c7e5a5252554b3d2ec5b2653c3eb12 *NAMESPACE
 603e29863074a7d15eaa5642c0bfb46c *R/mlapply.R
-ab1c30cdd55e7fd5ee4bd2f7c68a2dcd *R/mosaicupanddown.R
+bad234df89c61dac783ac14de259f556 *R/mosaicupanddown.R
 304978275aca52211a09b214d252a7a2 *R/mtapply.R
 1fbbc53b41612d05a34d26f371ca558f *R/wtd.boxplot.R
 8271b193a8ef4f03e1dc4dac5161d37b *R/wtd.boxplot.default.R
